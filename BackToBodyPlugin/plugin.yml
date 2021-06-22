@@ -1,0 +1,9 @@
+name: BackToBodyPlugin
+main: me.shanodis.BackToBodyPlugin.Main
+version: 1.0
+commands:
+//dopoprawy
+  sethome:
+    description: Sets your home
+  home:
+    description: Warp to your home
