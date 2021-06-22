@@ -41,10 +41,25 @@ public class Main extends JavaPlugin {
 		
 		String lowerCmd = cmd.getName().toLowerCase();
 		String playerNickname = player.getName();
+		ErrorHandler errorHandler = new ErrorHandler(player);
 		
-		if (lowerCmd.equals("back") && (playerList.containsKey(playerNickname)) && (args.length == 0)) {
-			player.teleport(playerList.get(playerNickname));
+		if (!playerList.containsKey(playerNickname)) {
+			errorHandler.handle(1);
+			return false;
+		}
+		
+		if (args.length != 0) {
+			errorHandler.handle(2);
+			return false;
+		}
+		
+		if (lowerCmd.equals("back")) {
+			Location location = playerList.get(playerNickname);
+			
+			new DangerChecker().run(location);
+			player.teleport(location);
 			playerList.remove(playerNickname);
+			
 			player.sendMessage(
 					ChatColor.BLUE + "(BackToBodyPlugin): " + 
 					ChatColor.ITALIC.toString() + "You have been teleported to your body!"
