@@ -2,6 +2,7 @@ package me.shanodis.BackToBodyPlugin;
 
 import java.util.HashMap;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,6 +24,9 @@ public class PluginListener implements Listener {
 		Location location = new Location(player.getWorld(), cordinates.getBlockX(), cordinates.getBlockY(), cordinates.getZ());
 		
 		playerList.put(player.getName(), location);
-		player.sendMessage("(BackToBodyPlugin): You have died! Return to your body by typing the command: /back");
+		player.sendMessage(
+				ChatColor.BLUE + "(BackToBodyPlugin): " + 
+				ChatColor.ITALIC.toString() + "You have died! Return to your body by typing the command: /back"
+		);
 	}
 }

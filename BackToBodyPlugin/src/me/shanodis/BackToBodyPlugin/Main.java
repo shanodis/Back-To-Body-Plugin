@@ -2,6 +2,7 @@ package me.shanodis.BackToBodyPlugin;
 
 import java.util.HashMap;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -44,7 +45,10 @@ public class Main extends JavaPlugin {
 		if (lowerCmd.equals("back") && (playerList.containsKey(playerNickname)) && (args.length == 0)) {
 			player.teleport(playerList.get(playerNickname));
 			playerList.remove(playerNickname);
-			player.sendMessage("You have been teleported to your corpse!");
+			player.sendMessage(
+					ChatColor.BLUE + "(BackToBodyPlugin): " + 
+					ChatColor.ITALIC.toString() + "You have been teleported to your body!"
+			);
 		}
 		
 		return true;
