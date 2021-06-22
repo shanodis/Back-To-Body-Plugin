@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
 public class PluginListener implements Listener {
 	
@@ -24,9 +25,18 @@ public class PluginListener implements Listener {
 		Location location = new Location(player.getWorld(), cordinates.getBlockX(), cordinates.getBlockY(), cordinates.getZ());
 		
 		playerList.put(player.getName(), location);
-		player.sendMessage(
-				ChatColor.BLUE + "(BackToBodyPlugin): " + 
-				ChatColor.ITALIC.toString() + "You have died! Return to your body by typing the command: /back"
-		);
+	}
+	
+	@EventHandler
+	public void onPlayerRespawn(PlayerRespawnEvent event) {
+		Player player = event.getPlayer();
+		String playerNickName = player.getName();
+		
+		if (playerList.containsKey(playerNickName)) {
+			player.sendMessage(
+					ChatColor.BLUE + "(BackToBodyPlugin): " + 
+					ChatColor.ITALIC.toString() + "You have died! Return to your body by typing the command: /back"
+			);
+		}
 	}
 }
