@@ -3,4 +3,4 @@ main: me.shanodis.BackToBodyPlugin.Main
 version: 1.0
 commands:
   back:
-    description: The command will teleport a player to it's body. It can be executed when the player have died.
+    description: The command will teleport a player to it's body. It can be executed when the player has died.
